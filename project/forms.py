@@ -1,19 +1,19 @@
-# from django.contrib.auth import get_user_model
-# from django.contrib.auth.forms import UserCreationForm, UserChangeForm
-# from .models import Custom_User
+from django import forms
+from django.contrib.auth.models import User
+from .models import UserBio, Post
 
-# class CustomUserCreationForm(UserCreationForm):
-#     class Meta:
-#         model = Custom_User
-#         fields = ("username", "email", "password1", "password2")
+class UserForm(forms.ModelForm):
+    class Meta:
+        model = User
+        fields = ("username", "email", "password")
 
-# class CustomUserChangeForm(UserCreationForm):
+class UserBioForm(forms.ModelForm):
 
-#     class Meta:
-#         model = Custom_User
-#         fields = UserChangeForm.Meta.fields
+    class Meta:
+        model = UserBio
+        fields = ("bio",)
 
-#     # def __init__(self, *args, **kwargs):
-#     #     super().__init__(*args, **kwargs)
-#     #     self.fields["username"].label = "Display name"
-        
+class PostForm(forms.ModelForm):
+    class Meta:
+        model = Post
+        fields = ("title", "text")
